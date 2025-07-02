@@ -1,16 +1,17 @@
 {
+    "homepage": "https://yousif-hibi.github.io/Keeper/",
     "name": "keeper",
     "version": "1.0.0",
     "description": "Keeper App using modern React and TypeScript",
-    "homepage": "https://yousif-hibi.github.io/Keeper/",
+   
     "main": "src/index.tsx",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "dependencies": {
         "react": "^18.3.1",
