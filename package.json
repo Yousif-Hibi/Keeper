@@ -2,7 +2,7 @@
     "name": "keeper-part-3",
     "version": "1.0.0",
     "description": "Keeper App using modern React and TypeScript",
-    "homepage": "https://Yousif-Hibi.github.io/keeper-part-3",
+    "homepage": "https://Yousif-Hibi.github.io/keeper",
     "main": "src/index.tsx",
     "scripts": {
       "start": "react-scripts start",
