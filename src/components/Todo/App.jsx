@@ -4,6 +4,7 @@ import InputArea from "./InputArea";
 import Header from "../Header";
 import Footer from "../Footer";
 import "./todo.css";
+
 function App() {
   const [item, setItem] = useState("");
   const [list, setList] = useState([]);
@@ -22,14 +23,37 @@ function App() {
   function setNewitem(event) {
     const { value } = event.target;
     setItem(value);
-    console.log(item);
   }
+
   function addToList() {
-    setList([...list, item]);
+    if (item.trim() === "") return;
+    setList([...list, { text: item, completed: false }]);
+    setItem("");
   }
-  function isClicked(id) {
-    setList(list.filter((item, index) => index !== id));
+
+  function toggleComplete(id) {
+    setList(
+      list.map((item, index) =>
+        index === id ? { ...item, completed: !item.completed } : item
+      )
+    );
   }
+
+  function deleteIfCompleted(id) {
+    setList(list.filter((item, index) => index !== id || !item.completed));
+  }
+
+  function handleItemClick(id, event) {
+    if (event.type === "click") {
+      // Left click - toggle strike through
+      toggleComplete(id);
+    } else if (event.type === "contextmenu") {
+      // Right click - delete only if completed
+      event.preventDefault();
+      deleteIfCompleted(id);
+    }
+  }
+
   return (
     <div>
       <div className="container">
@@ -37,7 +61,11 @@ function App() {
           <h1>To-Do List</h1>
         </div>
         <div className="form">
-          <InputArea setNewitem={setNewitem} addToList={addToList} />
+          <InputArea
+            setNewitem={setNewitem}
+            addToList={addToList}
+            value={item}
+          />
         </div>
         <div>
           <ul>
@@ -45,8 +73,9 @@ function App() {
               <CreatItem
                 key={index}
                 id={index}
-                text={Element}
-                isClicked={isClicked}
+                text={Element.text}
+                completed={Element.completed}
+                handleClick={(e) => handleItemClick(index, e)}
               />
             ))}
           </ul>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-function CreatItem(items) {
+function CreatItem({ id, text, completed, handleClick }) {
   return (
-    <div
-      onClick={() => {
-        items.isClicked(items.id);
-      }}
+    <li
+      onClick={handleClick}
+      onContextMenu={handleClick}
+      style={{ textDecoration: completed ? "line-through" : "none" }}
     >
-      <li> {items.text} </li>
-    </div>
+      {text}
+    </li>
   );
 }
 export default CreatItem;

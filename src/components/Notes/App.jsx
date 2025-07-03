@@ -32,7 +32,9 @@ function App() {
   }
   function CreateNote(event) {
     event.preventDefault();
-    setList([...List, note]);
+    if (note.title.trim() === "" && note.content.trim() === "") return;
+    setList((prevList) => [...prevList, note]);
+    setNote({ title: "", content: "" }); // this will reset the inputs
   }
   function deleteNote(id) {
     setList(List.filter((item, index) => index !== id));
@@ -40,7 +42,12 @@ function App() {
 
   return (
     <div>
-      <CreateArea details={setNotedetails} Create={CreateNote} />
+      <CreateArea
+        details={setNotedetails}
+        Create={CreateNote}
+        title={note.title}
+        content={note.content}
+      />
       {List.map((item, index) => (
         <Note
           key={index}

@@ -6,6 +6,7 @@ function InputArea(items) {
       {" "}
       <input
         type="text"
+        value={items.value}
         onChange={(text) => {
           items.setNewitem(text);
         }}

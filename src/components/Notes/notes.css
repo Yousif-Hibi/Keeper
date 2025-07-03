@@ -51,6 +51,7 @@ footer p {
 .note h1 {
   font-size: 1.1em;
   margin-bottom: 6px;
+  text-align: left;
 }
 
 .note p {
@@ -58,6 +59,7 @@ footer p {
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
+  text-align: left;
 }
 
 .note button {

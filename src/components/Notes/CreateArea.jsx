@@ -7,6 +7,7 @@ function CreateArea(items) {
         <input
           name="title"
           placeholder="Title"
+          value={items.title}
           onChange={(title) => {
             items.details(title);
           }}
@@ -15,6 +16,7 @@ function CreateArea(items) {
           name="content"
           placeholder="Take a note..."
           rows="3"
+          value={items.content}
           onChange={(content) => {
             items.details(content);
           }}
